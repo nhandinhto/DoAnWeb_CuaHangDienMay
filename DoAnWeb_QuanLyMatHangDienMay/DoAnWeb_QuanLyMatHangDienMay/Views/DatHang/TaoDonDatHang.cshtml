@@ -1,0 +1,84 @@
+﻿@using DoAnWeb_QuanLyMatHangDienMay.Models;
+@{
+    ViewBag.Title = "TaoDonDatHang";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+    KHACHHANG kh = ViewBag.k;
+}
+@model GioHang
+<style>
+    .hiu {
+        padding-left: 30px;
+    }
+</style>
+<div class="container mt-2">
+    <center>
+        <form action="/DatHang/LuuDonDatHang" method="post">
+        <h4 style="text-transform: uppercase; font-weight: bold">Thông tin đặt hàng</h4>
+        <table>
+            <tr>
+                <td>Họ tên: 
+                    <span style="font-weight:bold">@kh.TENKH</span>
+                </td>
+                <td class="hiu">
+                    Số điện thoại:
+                    <span style="font-weight:bold">@kh.SDT</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">Địa chỉ:
+                    <span style="font-weight:bold">@kh.DIACHI</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày đặt:
+                    <span>@DateTime.Now.ToShortDateString()</span>
+                </td>
+                <td class="hiu">Ngày giao:
+                    <input type="date" name="txtNgayGiao"/>  @ViewBag.tb                  
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                <table class="table">                
+                    <tr>
+                        <td style="color:red; font-weight: bold; text-align:center" colspan="5">Thông tin chi tiết đặt hàng</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold">Mã sản phẩm</td>
+                        <td style="font-weight: bold">Tên sản phẩm</td>
+                        <td style="font-weight: bold">Đơn giá</td>
+                        <td style="font-weight: bold">Số lượng</td>
+                        <td style="font-weight: bold">Thành tiền</td>
+                    </tr>
+                        @foreach (CartItem a in Model.dsSP)
+                        {
+                            <tr>
+                                <td>@a.maSP</td>    
+                                <td>@a.tenSP</td>
+                                <td>@a.donGia</td>
+                                <td>@a.soLuong</td>
+                                <td>@a.thanhTien</td>   
+                            </tr>
+                        }
+            
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td style="font-weight:bold">Tổng cộng: </td>
+                            <td class="hiu">
+                               <span style="color:red; font-weight:bold">@Model.tongThanhTien()</span> 
+                            </td>
+                        </tr>
+                </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-center">
+                    <input type="submit" value="Xác nhận đặt hàng"/>
+                </td>
+            </tr>
+        </table>  
+        </form>      
+    </center>
+</div>

@@ -1,0 +1,20 @@
+﻿@using DoAnWeb_QuanLyMatHangDienMay.Models;
+
+@model List<NHASANXUAT>
+
+<style>
+    a:hover {
+        color: red
+    }
+</style>
+
+<ul class="nav flex-column">
+    @foreach (NHASANXUAT nsx in Model)
+    {
+        <li class="nav-item mt-3 border" style="border-radius: 7px; background-color: ButtonHighlight">
+            <a href="/Home/HTSPTheoNSX/@nsx.MANSX" style="text-decoration: none;">
+                @nsx.TENNSX
+            </a>
+        </li>
+    }
+</ul>

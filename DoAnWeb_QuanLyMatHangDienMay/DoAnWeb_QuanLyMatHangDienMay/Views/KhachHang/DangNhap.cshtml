@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+
+
+<center>
+    <h2 style="text-transform: uppercase; font-weight: bold">Đăng nhập</h2>
+<div class="container-fluid">
+    <div class="border" style="border-radius: 20px; padding-top: 10px; padding-bottom: 10px; width: 500px">
+    <form method="post" action="/KhachHang/DangNhap">
+        <table>
+            <tr>
+                <td>Tên đăng nhập</td>
+                <td style="padding-left: 20px; padding-bottom: 5px">
+                    <input type="text" name="txtDN" placeholder="Nhập vào tên đăng nhập...." style="width: 200px"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Mật khẩu</td>
+                <td style="padding-left: 20px; padding-bottom: 5px">
+                    <input type="password" name="txtMK" placeholder="Nhập vào mật khẩu...." style="width: 200px"/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="padding-left: 20px; padding-bottom: 5px">
+                    <input type="submit" value="Đăng nhập" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+</div>
+</center>
+
+@if (Request.HttpMethod == "POST")
+{
+    if(ViewBag.tb != null)
+    {
+        <p style="color: red; text-align: center">@ViewBag.tb</p>
+    }
+}

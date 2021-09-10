@@ -1,0 +1,20 @@
+﻿@using DoAnWeb_QuanLyMatHangDienMay.Models;
+
+@model List<LOAITHIETBI>
+
+<style>
+    a:hover {
+        color: red
+    }
+</style>
+
+<ul class="nav flex-column">
+    @foreach (LOAITHIETBI ltb in Model)
+    {
+        <li class="nav-item mt-3 border" style="border-radius: 7px; background-color: ButtonHighlight">
+            <a href="/Home/HTSPTheoLTB/@ltb.MATHIETBI" style="text-decoration: none;">
+                @ltb.TENTHIETBI
+            </a>
+        </li>
+    }
+</ul>

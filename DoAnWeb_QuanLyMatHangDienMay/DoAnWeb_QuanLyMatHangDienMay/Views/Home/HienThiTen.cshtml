@@ -1,0 +1,13 @@
+﻿@using DoAnWeb_QuanLyMatHangDienMay.Models;
+
+@if (ViewBag.kh != null)
+{
+    @Html.ActionLink("Đăng xuất", "DangXuat", "KhachHang")
+    KHACHHANG kh = ViewBag.kh;
+    <p style="color: white; font-weight: bold">Xin chào, <span style="color: red;">@kh.TENKH</span></p>
+}
+else
+{
+    @Html.ActionLink("Đăng nhập", "DangNhap", "KhachHang") <span>|</span>
+    @Html.ActionLink("Đăng ký", "DangKy", "KhachHang")
+}

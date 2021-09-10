@@ -1,0 +1,36 @@
+﻿@using DoAnWeb_QuanLyMatHangDienMay.Models;
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+
+<h2 style="font-weight: bold">Đăng kí tài khoản</h2>
+<div class="container">
+    <form action="/KhachHang/DangKy" method ="post">
+        <div class="w-50 border" style="border-radius: 8px; padding: 8px">
+            <div class="form-group">
+                <label>Tên khách hàng</label>
+                <input type="text" name="txtTenKH" placeholder="Your name..." class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label>Tên đăng nhập</label>
+                <input type="text" name="txtTenDN" placeholder="User name...." class="form-control"//>
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" name="txtMatKhau" placeholder="Password..." class="form-control"//>
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ</label>
+                <input type="text" name="txtDiaChi" placeholder="Địa chỉ..." class="form-control"//>
+            </div>
+            <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="number" name="txtSDT" class="form-control"//>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">Đăng ký</button>
+            </div>
+        </div>
+    </form>
+</div>

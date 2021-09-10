@@ -1,0 +1,49 @@
+﻿@using DoAnWeb_QuanLyMatHangDienMay.Models;
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+
+@model List<SANPHAM>
+<div class="container-fluid">
+    <h1 style="text-transform: uppercase; font-weight: bold">Tất cả sản phẩm</h1>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Thêm sản phẩm mới</button><br /><br />
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Mã SP</th>
+                <th>Tên SP</th>
+                <th>Đơn giá</th>
+                <th style="width: 500px">Mô tả</th>
+                <th>Số lượng</th>
+                <th>Hình</th>
+                <th>Danh sách hình</th>
+                <th>Giảm giá</th>
+                <th>Mã hãng</th>
+                <th>Mã thiết bị</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+            @foreach (SANPHAM sp in Model)
+            {
+                <tr>
+                    <td>@sp.MASP</td>
+                    <td>@sp.TENSP</td>
+                    <td>@sp.DONGIA</td>
+                    <td style="width: 500px">@sp.MOTA</td>
+                    <td>@sp.SOLUONG</td>
+                    <td>@sp.HINH</td>
+                    <td>@sp.DSHINH</td>
+                    <td>@sp.GIAMGIA</td>
+                    <td>@sp.MANSX</td>
+                    <td>@sp.MATHIETBI</td>
+                    <td>
+                        <a href="#" onclick ="return GetbyID(@sp.MASP)">Edit</a> |
+                        <a href="#" onclick ="Delete(@sp.MASP)">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
