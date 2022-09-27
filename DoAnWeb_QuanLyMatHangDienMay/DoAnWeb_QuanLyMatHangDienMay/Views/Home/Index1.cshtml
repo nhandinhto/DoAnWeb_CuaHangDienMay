@@ -7,9 +7,8 @@
 @model List<SANPHAM>
 <div class="container-fluid">
     <h1 style="text-transform: uppercase; font-weight: bold">Tất cả sản phẩm</h1>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Thêm sản phẩm mới</button><br /><br />
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodal" onclick="cleartextbox();">thêm sản phẩm mới</button><br /><br />
     <table class="table table-bordered table-hover">
-        <thead>
             <tr>
                 <th>Mã SP</th>
                 <th>Tên SP</th>
@@ -23,8 +22,7 @@
                 <th>Mã thiết bị</th>
                 <th></th>
             </tr>
-        </thead>
-        <tbody class="tbody">
+        
             @foreach (SANPHAM sp in Model)
             {
                 <tr>
@@ -39,11 +37,54 @@
                     <td>@sp.MANSX</td>
                     <td>@sp.MATHIETBI</td>
                     <td>
-                        <a href="#" onclick ="return GetbyID(@sp.MASP)">Edit</a> |
-                        <a href="#" onclick ="Delete(@sp.MASP)">Delete</a>
+                        <a href="#" >Edit</a> |
+                        <a href="#">Delete</a>
                     </td>
                 </tr>
             }
-        </tbody>
+        
     </table>
 </div>
+
+@*<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm mới</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="EmployeeID">
+                            ID
+                        </label>
+                        <input type="text" class="form-control" id="id" placeholder="Mã" disabled="disabled"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">
+                            Name
+                        </label>
+                        <input type="text" class="form-control" id="name" placeholder="Tên" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Age">
+                            Type
+                        </label>
+                        <input type="text" class="form-control" id="type" placeholder="Loại"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="State">
+                            Price
+                        </label>
+                        <input type="text" class="form-control" id="price" placeholder="Giá"/>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" style="display: none;" onclick="Update();">Update</button>
+                <button type="button" class="btn btn-default" id="btnClose" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>*@

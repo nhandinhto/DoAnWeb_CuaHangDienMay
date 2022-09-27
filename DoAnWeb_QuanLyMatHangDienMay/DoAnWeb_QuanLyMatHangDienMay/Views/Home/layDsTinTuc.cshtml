@@ -1,0 +1,45 @@
+﻿@model IEnumerable<DoAnWeb_QuanLyMatHangDienMay.Models.TINTUC>
+
+@{
+    ViewBag.Title = "layDsTinTuc";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+
+<h2 style="font-weight: bold; text-transform: uppercase">Danh sách tin tức</h2>
+
+<p>
+    @Html.ActionLink("Thêm 1 tin tức mới", "themMoiTinTuc", null, new { @class = "btn btn-primary" })
+</p>
+<table>
+    <tr>
+        <th style="text-transform: uppercase">
+            Tên tin tức
+        </th>
+        <th style="text-transform: uppercase">
+            Đường dẫn
+        </th>
+        <th style="text-transform: uppercase">
+            Hình
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENTIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DUONGDAN)
+        </td>
+        <td>
+            <img src="~/Content/HinhTinTuc/@item.HINH" class="w-50"/>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MATIN }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MATIN }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

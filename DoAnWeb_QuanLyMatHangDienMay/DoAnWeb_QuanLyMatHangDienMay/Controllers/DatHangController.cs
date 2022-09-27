@@ -12,7 +12,7 @@ namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
         //
         // GET: /DatHang/
 
-        DataClasses1DataContext data = new DataClasses1DataContext("Data Source=DESKTOP-T32VP39\\SQL2012;Initial Catalog=DOANWEB_QLCUAHANGDIENMAY;Integrated Security=True");
+        DataClasses1DataContext data = new DataClasses1DataContext();
 
         public ActionResult XemGioHang()
         {
@@ -69,7 +69,7 @@ namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
                 return RedirectToAction("TaoDonDatHang", "DatHang");
             }
             else
-            {
+            {                
                 TimeSpan tt = ngayGiao - DateTime.Now;
                 double diff = tt.TotalDays;
                 if (diff < 0)

@@ -87,10 +87,7 @@ CREATE TABLE TINTUC
 (
 	MATIN INT IDENTITY(1,1) PRIMARY KEY,
 	TENTIN NVARCHAR(500),
-	HEADER NVARCHAR(MAX),
-	CONTENT NVARCHAR(MAX),
-	FOOTER NVARCHAR(MAX),
-	DSHINH NVARCHAR(MAX),
+	DUONGDAN NVARCHAR(500),
 	HINH NVARCHAR(500),
 )
 
@@ -271,16 +268,14 @@ INSERT INTO CHITIETHOADON VALUES(1,'SP003',1,9490000,9490000)
 INSERT INTO CHITIETHOADON VALUES(1,'SP002',2,10490000,20980000)
 
 ----THÊM DỮ LIỆU VÀO BẢNG TIN TỨC
---INSERT INTO TINTUC VALUES(N'Những nguyên nhân khiến bình gas nhà bạn phát nổ',N'Dây dẫn nối bình gas với bếp bị rò rỉ;',
---'hinh1.jpg')
---INSERT INTO TINTUC VALUES(N'Tại sao tủ lạnh lại có 2 nút điều chỉnh nhiệt độ?',N'Nút điều chỉnh công suất dàn lạnh; Tuy cả hai nút đều có chức năng là điều chỉnh độ lạnh của 2 ngăn, nhưng nguyên lý hoạt động của mỗi nút lại hoàn toàn khác nhau. Đầu tiên, chúng ta hãy xem xét nút điều chỉnh được đặt tại ngăn lạnh. Nút này thường có dạng núm vặn, có chức năng là điều chỉnh công suất của dàn lạnh trên tủ. Nghĩa là khi bạn điều chỉnh bằng nút này, sẽ làm thay đổi độ lạnh của cả ngăn đá và ngăn lạnh. Nếu bạn chỉnh số càng to, dàn lạnh của tủ sẽ hoạt động với công suất lớn hơn và tủ sẽ làm lạnh nhanh hơn trên cả 2 ngăn.;hinh2-1.jpg|
---Nút phân phối gió; Các tủ lạnh thông thường chỉ có 1 dàn lạnh và từ dàn lạnh này, sẽ có 1 quạt gió được bố trí ẩn bên trong tủ để đưa hơi lạnh đến 2 ngăn trên tủ. Quạt gió này thường được đặt ở phía trên ngăn đá. Vì vậy, nút điều chỉnh này thực chất dùng để phân chia luồng gió xuống mỗi ngăn bên trong tủ. Ví dụ ở hình bên trên là nút điều chỉnh tại ngăn đá, nếu bạn gạt qua trái, hơi lạnh sẽ được phân phối xuống ngăn lạnh nhiều hơn. Nếu gạt qua phải, hơi lạnh sẽ được ưu tiên đưa lên ngăn đá nhiều hơn. Việc nắm được nguyên lý hoạt động của 2 nút điều chỉnh này rất quan trọng. Ví dụ trong trường hợp bạn ít sử dụng ngăn đá và chỉ tập trung vào bảo quản thực phẩm tại ngăn lạnh. Như vậy, bạn chỉ cần gạt nút gạt sao cho gió thổi xuống ngăn lạnh nhiều hơn mà không cần thiết phải tăng công suất tủ bằng nút điều chỉnh dưới ngăn lạnh gây hao tốn điện không cần thiết.;hinh2-2.jpg','hinh2.jpg')
+INSERT INTO TINTUC VALUES(N'Những nguyên nhân khiến bình gas nhà bạn phát nổ',N'https://www.dienmayxanh.com/kinh-nghiem-hay/nhung-nguyen-nhan-khien-binh-gas-nha-ban-phat-no-916098',
+'hinh1.jpg')
+INSERT INTO TINTUC VALUES(N'Tại sao tủ lạnh lại có 2 nút điều chỉnh nhiệt độ?',N'https://www.dienmayxanh.com/kinh-nghiem-hay/tai-sao-tu-lanh-lai-co-2-nut-dieu-chinh-nhiet-do-945050','hinh2.jpg')
 
---INSERT INTO TINTUC VALUES(N'Kiến, côn trùng chui vào tai, cần làm ngay theo hướng dẫn sau',N'Triệu chứng thường gặp để nhận biết côn trùng chui vào tai;Theo PGS.TS Nguyễn Tiến Dũng (Nguyên Trưởng khoa Nhi, Bệnh viện Bạch Mai), triệu chứng thường gặp sau khị bị kiến hoặc côn trùng chui vào tai là đột ngột đau dữ dội một bên tai (trước đó không có bệnh gì liên quan đến tai). Có thể có những cơn đau dữ dội xen kẽ với khoảng thời gian âm ỉ. Nguyên nhân là do côn trùng chích đốt hoặc chân có gai ngạnh đâm vào tai. Nhiều người cảm giác như có con gì bò trong tai, ngứa ngáy, rất khó chịu. Tuyệt đối không sử dụng bông tai hay bất cứ thứ gì để ngoáy tai, điều này đang vô tình khiến cho côn trùng bị đẩy sâu vào trong tai.;hinh3-1.jpg|
---Hệ quả nguy hiểm của việc bị côn trùng chui vào tai; Nếu chẳng may bị côn trùng chui vào tai, bạn có thể phải đối mặt với tình trạng tai chảy nước, thậm chí chảy máu do côn trùng gây trầy xước, rách màng nhĩ, nhất là côn trùng sống to có càng hay ngạnh sắc bén như dế, gián, cào cào. Chưa hết, việc vô tình khiến côn trùng chui vào tai không được sơ cứu kịp thời có thể dẫn đến những bệnh về tai không mong muốn như viêm tai , cảm giác nhức buốt khó chịu, một số loài còn hút máu, tấn công làm thủng màng nhĩ, và có thể dẫn đến nguy cơ mất thính lực.;hinh3-2.jpg|
---Các cách xử lý côn trùng chui vào tai; Khi kiến, côn trùng chui vào tai, lấy chai dầu ôliu hoặc chai dầu em bé (dầu khoáng) hay dùng để mát xa cho em bé, rồi nghiêng đầu về bên ngược lại, để bên lỗ tai có con côn trùng hướng lên trên. Sau đó đổ một ít dầu vào lỗ tai có côn trùng làm côn trùng sẽ chết ngộp. Côn trùng sau khi bị ngộp chết sẽ nổi lên và ra khỏi lỗ tai theo dầu. Khi nó ra được rồi, bạn nghiêng đầu về bên lỗ tai vừa có côn trùng đi ra, để cho dầu ra hết và không cần rửa dầu trong ống tai.','')
+INSERT INTO TINTUC VALUES(N'Kiến, côn trùng chui vào tai, cần làm ngay theo hướng dẫn sau',N'https://www.dienmayxanh.com/kinh-nghiem-hay/kien-con-trung-chui-vao-tai-can-lam-ngay-cac-hanh-1135483','hinh3.jpg')
 
-
+INSERT INTO TINTUC VALUES(N'1 phút để khôi phục tin nhắn đã xóa trên Zalo, Facebook, Viber, Iphone',N'https://www.dienmayxanh.com/kinh-nghiem-hay/1-phut-de-khoi-phuc-tin-nhan-da-xoa-tren-zalo-face-1100758','hinh4.jpg')
+INSERT INTO TINTUC VALUES(N'Cách xem mật khẩu wifi đã lưu trên điện thoại Android',N'https://www.dienmayxanh.com/kinh-nghiem-hay/cach-xem-mat-khau-wifi-da-luu-tren-dien-thoai-andr-1183372','hinh5.jpg')
 
 CREATE TRIGGER THEMSPCTHD
 ON CHITIETHOADON

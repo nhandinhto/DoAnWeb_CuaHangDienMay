@@ -1,0 +1,37 @@
+﻿@model DoAnWeb_QuanLyMatHangDienMay.Models.TINTUC
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutQuanLy.cshtml";
+}
+<h2 style="font-weight: bold; text-transform: uppercase">Cập nhật tin tức</h2>
+
+
+
+<div class="container">
+    <form method="post" action="/Home/CapNhat" enctype="multipart/form-data">
+            <input type="number" name="txtMa" class="form-control" value="@Model.MATIN" hidden="hidden"/>   
+        <div class="form-group">
+            <label>Tên tin tức</label>
+            <input type="text" name="txtTen" class="form-control" placeholder="Tên của tin tức....." />
+        </div>
+        <div class="form-group">
+            <label>Đường dẫn tin tức</label>
+            <input type="text" name="txtDuongDan" class="form-control" placeholder="Đường dẫn của tin tức....." />
+        </div>
+        <div class="form-group">
+            <label>Hình ảnh</label>
+            <input type="file" name="fupload" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Cập nhật" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

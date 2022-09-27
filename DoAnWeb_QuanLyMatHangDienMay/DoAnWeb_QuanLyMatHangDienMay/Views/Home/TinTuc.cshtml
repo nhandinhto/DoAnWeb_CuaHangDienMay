@@ -1,14 +1,13 @@
 ﻿@using DoAnWeb_QuanLyMatHangDienMay.Models;
 
 @model List<TINTUC>
-
 <div class="container">
     @foreach (TINTUC tt in Model)
     {
         <div class="mb-3">
             <img src="~/Content/HinhTinTuc/@tt.HINH" class="w-100"/>
             <div>
-                <a href="/Home/ChiTietTinTuc/@tt.MATIN">
+                <a href="@tt.DUONGDAN">
                     @tt.TENTIN
                 </a>
             </div>

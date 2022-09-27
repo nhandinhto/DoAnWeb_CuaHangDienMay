@@ -1,6 +1,6 @@
 ﻿//Load data lên table khi document sẵn sàng
 $(document).ready(function () {
-    
+    loadSP();
 })
 
 //Phương thức load data
@@ -29,6 +29,35 @@ function loadSP() {
                 html += '</tr>';
             });
             $('.tbody').html(html);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+//Thêm 1 sản phẩm
+function Add() {
+    var sp = {
+        masp: $('#masp').val(),
+        tensp: $('#tensp').val(),
+        dongia: $('#dongia').val(),
+        mota: $('#mota').val(),
+        soluong: $('#soluong').val(),
+        masp: $('#masp').val(),
+        masp: $('#masp').val(),
+        masp: $('#masp').val(),
+        masp: $('#masp').val(),
+    };
+    $.ajax({
+        url: "/Home/Add",
+        data: JSON.stringify(emp),
+        type: "POST",
+        contentType: "application/json;charset = utf-8",
+        dataType: "json",
+        success: function () {
+            loadData();
+            $('#myModal').trigger('click');
         },
         error: function (errormessage) {
             alert(errormessage.responseText);

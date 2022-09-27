@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DoAnWeb_QuanLyMatHangDienMay.Models;
+using System.IO;
 
 namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
 {
@@ -11,7 +12,7 @@ namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
     {
         //
         // GET: /Home/
-        DataClasses1DataContext data = new DataClasses1DataContext("Data Source=DESKTOP-T32VP39\\SQL2012;Initial Catalog=DOANWEB_QLCUAHANGDIENMAY;Integrated Security=True");
+        DataClasses1DataContext data = new DataClasses1DataContext();
 
         public ActionResult Index() //Giao diện trang chủ
         {
@@ -68,16 +69,108 @@ namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
             return View(sp);
         }
 
-        //public ActionResult TinTuc()
-        //{
-        //    List<TINTUC> dstt = data.TINTUCs.ToList();
-        //    return PartialView(dstt);
-        //}
+        public ActionResult TinTuc()
+        {
+            List<TINTUC> dstt = data.TINTUCs.ToList();
+            return PartialView(dstt);
+        }
 
-        //public ActionResult ChiTietTinTuc(int id)
-        //{
-        //    TINTUC tt = data.TINTUCs.SingleOrDefault(t => t.MATIN == id);
-        //    return View(tt);
-        //}
+        public ActionResult HoTro()
+        {
+            return View();
+        }
+        
+        [HttpPost]
+        public JsonResult Add(SANPHAM sp)
+        {
+            int kq = 1;
+            try
+            {
+                data.SANPHAMs.InsertOnSubmit(sp);
+                data.SubmitChanges();
+            }
+            catch
+            {
+                kq = 0;
+            }
+            return Json(kq, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult layDsTinTuc()
+        {
+            TinTucController ttc = new TinTucController();
+            List<TINTUC> ds = ttc.GetDSTinTuc();
+            return View(ds);
+        }
+
+        [HttpGet]
+        public ActionResult themMoiTinTuc()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult themMoiTinTuc(FormCollection col, HttpPostedFileBase fupload)
+        {
+            string ten = col["txtTen"].ToString();
+            string duong = col["txtDuongDan"].ToString();
+            string hinh = fupload.FileName;
+            string path = Path.Combine(Server.MapPath("~/Content/HinhTinTuc/" + Path.GetFileName(fupload.FileName)));
+            fupload.SaveAs(path);
+            TinTucController ttc = new TinTucController();
+            TINTUC a = new TINTUC();
+            bool kq = ttc.themTinTuc(ten, duong, hinh);
+            if(!kq)
+            {
+                return View();
+            }
+            return RedirectToAction("layDsTinTuc", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            TinTucController tt = new TinTucController();
+            TINTUC a = tt.GetTinTuc(id);
+            return View(a);
+        }
+
+        [HttpPost]
+        public ActionResult CapNhat(FormCollection col, HttpPostedFileBase fupload)
+        {
+            try
+            {
+                TinTucController tt = new TinTucController();
+                int id = int.Parse(col["txtMa"]);
+                string ten = col["txtTen"];
+                string duongDan = col["txtDuongDan"];
+                string hinh = fupload.FileName;
+                fupload.SaveAs(Server.MapPath("~/Content/HinhTinTuc/" + fupload.FileName));
+                bool kq = tt.UpdateTinTuc(id, ten, duongDan, hinh);
+                if (!kq)
+                {
+                    return View();
+                }
+                return RedirectToAction("layDsTinTuc");
+            }
+            catch
+            {
+                ViewBag.tb = "Xin vui lòng nhập đủ tất cả thông tin";
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            TinTucController tt = new TinTucController();
+            tt.XoaTinTuc(id);
+            return RedirectToAction("layDsTinTuc", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult ThemSP()
+        {
+            return View();
+        }
     }
 }

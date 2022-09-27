@@ -11,7 +11,7 @@ namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
     {
         //
         // GET: /KhachHang/
-        DataClasses1DataContext data = new DataClasses1DataContext("Data Source=DESKTOP-T32VP39\\SQL2012;Initial Catalog=DOANWEB_QLCUAHANGDIENMAY;Integrated Security=True");
+        DataClasses1DataContext data = new DataClasses1DataContext();
 
         [HttpGet]
         public ActionResult DangNhap()
@@ -59,7 +59,7 @@ namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
         }
 
         [HttpPost]
-        public ActionResult DangKy(FormCollection col)
+        public ActionResult GoDangKy(FormCollection col)
         {
             try
             {
@@ -68,17 +68,26 @@ namespace DoAnWeb_QuanLyMatHangDienMay.Controllers
                 string tenDN = col["txtTenDN"].ToString();
                 string matKhau = col["txtMatKhau"].ToString();
                 string sdt = col["txtSDT"].ToString();
-                KHACHHANG a = new KHACHHANG();
-                a.TENKH = tenKH;
-                a.TENDN = tenDN;
-                a.MATKHAU = matKhau;
-                a.DIACHI = diaChi;
-                a.SDT = sdt;
-                a.MALOAI = "LTK001";
-                data.KHACHHANGs.InsertOnSubmit(a);
-                data.SubmitChanges();
-                Session["kh"] = a;
-                return RedirectToAction("Index","Home");
+                
+                if (tenKH != "" && diaChi != "" && tenDN != "" && matKhau != "" && sdt != "")
+                {
+                    KHACHHANG a = new KHACHHANG();
+                    a.TENKH = tenKH;
+                    a.TENDN = tenDN;
+                    a.MATKHAU = matKhau;
+                    a.DIACHI = diaChi;
+                    a.SDT = sdt;
+                    a.MALOAI = "LTK001";
+                    data.KHACHHANGs.InsertOnSubmit(a);
+                    data.SubmitChanges();
+                    Session["kh"] = a;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.tb = "Không được bỏ trống bất kì trường dữ liệu nào";
+                    return RedirectToAction("DangKy", "KhachHang");
+                }
             }
             catch
             {

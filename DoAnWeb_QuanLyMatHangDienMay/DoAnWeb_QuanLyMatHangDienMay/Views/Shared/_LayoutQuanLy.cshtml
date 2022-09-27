@@ -74,12 +74,16 @@
                         @Html.ActionLink("Trang chủ", "Index", "Home", null, new { @class = "nav-link" })   
                     }
                 </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Tin tức", "TinTuc", "Home", null, new { @class = "nav-link" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Sự kiện", "SuKien", "Home", null, new { @class = "nav-link" })
-                </li>
+                @if (Session["kh"] != null)
+                {
+                        KHACHHANG a = (KHACHHANG)Session["kh"];
+                        if (a.MALOAI == "LTK002")
+                        {
+                        <li class="nav-item">
+                            @Html.ActionLink("Tin tức", "layDsTinTuc", "Home", null, new { @class = "nav-link" })
+                        </li>
+                        }
+                }                
                 <li class="nav-item">
                     @Html.ActionLink("Hỗ trợ", "HoTro", "Home", null, new { @class = "nav-link" })
                 </li>
@@ -100,7 +104,7 @@
                 @RenderBody()
             </div>
             <div class="col-md-2 mt-3">
-                @*@Html.Action("TinTuc", "Home")*@
+                @Html.Action("TinTuc", "Home")
             </div>
         </div>
         <br />
@@ -119,6 +123,6 @@
     </div>
     <script src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/Content/bootstrap/js/SanPham.js"></script>
+    @*<script src="~/Content/bootstrap/js/SanPham.js"></script>*@
 </body>
 </html>
